@@ -14,6 +14,8 @@ from pathlib import Path
 
 import os
 
+import django_heroku
+
 # import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -157,3 +159,5 @@ REST_FRAMEWORK = {
 CRONJOBS = [
    ('0   4 * * *', 'django.core.management.call_command', ['addusers.py']),
 ]
+
+django_heroku.settings(locals())
