@@ -5,6 +5,9 @@ class BaseModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        abstract = True
+
 
 class Client(BaseModel):
     cid = models.CharField(max_length=60, unique=True, db_index=True)
@@ -26,7 +29,7 @@ class Client(BaseModel):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
+  
 
 class ClientWallet(BaseModel):
     client = models.OneToOneField(Client, on_delete=models.CASCADE)
@@ -43,3 +46,6 @@ class ClientWallet(BaseModel):
     @property
     def cid(self):
         return self.client.cid
+
+
+    

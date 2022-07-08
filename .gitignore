@@ -2,3 +2,17 @@
 .old
 env/
 db.sqlite3
+venv
+
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

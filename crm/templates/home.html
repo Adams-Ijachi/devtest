@@ -1,0 +1,62 @@
+ {% extends 'base.html' %}
+
+ {% block content %}
+
+
+
+ 
+
+
+    <div class="mb-5 d-flex justify-content-end">
+        <a href="{% url 'create_client' %}" class="btn btn-primary">Add Client</a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Country Code</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col"></th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for client in clients %}
+                
+            <tr>
+                <th scope="row">{{ forloop.counter}}</th>
+                <td>
+                    <a href=" {% url 'view_client' client.id %}"> 
+                         {{ client.full_name}}
+                    </a>
+                    </td> 
+                <td>{{ client.email }}</td>
+                <td>{{ client.country_code }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.phone }}</td>
+
+                <td> 
+                    <form method="POST" action="{% url 'delete_client' client.id %}" >
+                        {% csrf_token %}
+                        <button class="btn btn-danger">delete</button>
+                    </form>
+
+                    <a class="btn btn-primary" href=" {% url 'update_client' client.id %}"> 
+                        edit 
+                   </a>
+                </td>
+              </tr>
+            {% empty %}
+                <li> No Clients </li>
+            {% endfor %}
+
+        
+        </tbody>
+      </table>
+
+ 
+ {% endblock content %}

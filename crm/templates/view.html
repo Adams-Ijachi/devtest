@@ -1,0 +1,26 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Avavilable Bal : {{ client.clientwallet.available_balance }} </li>
+    <li class="list-group-item">Lien Bal :  {{ client.clientwallet.lien_balance }} </li>
+    <li class="list-group-item">Total Bal :  {{ client.clientwallet.total_balance }} </li>
+   
+</ul>   
+
+
+{% include "form.html" with form=form %}
+
+
+
+{% endblock content %}
+
+
+
+
+
+
